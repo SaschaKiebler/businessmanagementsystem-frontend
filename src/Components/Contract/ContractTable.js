@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Contract from "./Contract";
 
 export default class ContractTable extends React.Component {
@@ -11,7 +12,6 @@ export default class ContractTable extends React.Component {
     };
   }
 
- 
   componentDidMount() {
     fetch("http://localhost:8080/api/v1/contract")
       .then((res) => res.json())
@@ -33,14 +33,20 @@ export default class ContractTable extends React.Component {
 
     return (
       <div>
-        
-            {contracts.map((row) => {
-              return (
-                <div key={row.id} className="text-2xl text-left">
-                  <Contract name={row.contract_name} startdate={row.contract_plannedstartdate} enddate={row.contract_plannedenddate}/>
-                </div>
-              );
-            })}
+        {contracts.map((row) => {
+          return (
+            <div key={row.id} className="text-2xl text-left">
+              <Link to={`/auftraege/${row.id}`}>
+                
+                <Contract
+                  name={row.contract_name}
+                  startdate={row.contract_plannedstartdate}
+                  enddate={row.contract_plannedenddate}
+                />
+              </Link>
+            </div>
+          );
+        })}
       </div>
     );
   }

@@ -1,6 +1,6 @@
-import Employees from "../Employees";
-import Clients from "./Clients";
-import ContractTable from "./ContractTable";
+import Employees from "../../Employees";
+import Clients from "../Client/Clients";
+import ContractTable from "../Contract/ContractTable";
 import NewsFeed from "./NewsFeed";
 
 function Survey() {
